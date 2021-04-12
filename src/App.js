@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react'
 import Products from './Components/Products'
+import Filter from './Components/Filter'
 
 const data = require('./assets/data.json')
 
@@ -15,6 +16,37 @@ class App extends React.Component {
     }
   }
 
+  sortProducts= (e)=>{
+    //implement
+    const sort = e.target.value
+    this.setState(state => ({
+      sort: sort,
+      products: this.state.products.slice().sort((a,b) => (
+        sort === "Lowest"?
+        (a.price > b.price) ? 1:-1
+        :
+        sort === "Highest"?
+        (a.price < b.price) ? 1:-1
+        :
+        (a.id > b.id) ? 1:-1
+      ))
+    }))
+  }
+
+  filterProducts = (e) =>{
+    //implement
+    if(e.target.value === ""){
+      this.setState({size: e.taerget.value, product: data.products})
+    }else{
+      this.setState({
+      size: e.target.value,
+      products: data.products.filter(product => product.availableSizes.indexOf(e.target.value) >= 0) //checking if the size exist in array
+      })
+    }
+    
+  }
+
+
   render(){
       return (
       <div className="grid-container">
@@ -24,7 +56,11 @@ class App extends React.Component {
         <main>
           <div className="content">
             <section className="mainContent">
-            < Products products={this.state.products} />
+              < Filter count={this.state.products.length} size={this.state.size} sort={this.state.sort} 
+              filterProducts={this.filterProducts}
+              sortProducts={this.sortProducts}
+              />
+              < Products products={this.state.products} />
             </section>
             <section className="sidebar">
               CartItems

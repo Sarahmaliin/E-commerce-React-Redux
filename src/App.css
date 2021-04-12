@@ -145,3 +145,34 @@ a{
 .button:hover{
   background-color: #F4F4F4;
 }
+
+/* filter */
+
+.filter{
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+  border-bottom: 0.1rem solid #c0c0c0;
+}
+
+.filter section{
+  flex: 1;
+}
+
+select{
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 36px;
+  margin-left: .5rem;
+}
+
+.filter-size, .filter-sort, .filter-result{
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.5rem;
+  line-height: 36px;
+}
