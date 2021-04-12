@@ -1,3 +1,64 @@
-.App {
-  text-align: center;
+html{
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body, #root{
+  height: 100vh;
+  margin: 0;
+}
+
+h1{
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+}
+
+p{
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.125rem;
+}
+
+.grid-container{
+  height: 100vh;
+  display: grid;
+  grid-template-areas: "header"
+  "main"
+  "footer";
+  grid-template-rows: 50rem 1fr 5rem;
+  grid-template-columns: 1fr;
+}
+
+a:hover{
+  background-color: #F4F4F4;
+}
+
+header{
+  grid-area: header;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-image: url(./Rectangle\ 1.png);
+  background-repeat: no-repeat;
+  background-position: top;
+  color: black;
+}
+
+header a{
+  color: black;
+  text-decoration: none;
+}
+
+main{
+  grid-area: main;
+  color: black;
+}
+
+footer{
+  grid-area: footer;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #e3dedab2;
+  color: black;
 }
