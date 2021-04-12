@@ -1,0 +1,52 @@
+{
+    "products":[
+        {
+            "id": "Item1",
+            "title":"SINUS standard T-shirt",
+            "image": "../images/Tshirt black.png",
+            "description": "About item 1",
+            "price": 300,
+            "availableSizes": [ "S", "M", "L", "XL" ]
+        },
+        {
+            "id": "Item2",
+            "title":"SINUS standard T-shirt",
+            "image": "../images/Tshirt blue.png",
+            "description": "About item 1",
+            "price": 300,
+            "availableSizes": [ "S", "M", "L", "XL" ]
+        },
+        {
+            "id": "Item3",
+            "title":"SINUS standard T-shirt",
+            "image": "../images/Tshirt pink.png",
+            "description": "About item 1",
+            "price": 300,
+            "availableSizes": [ "S", "M", "L", "XL" ]
+        },
+        {
+            "id": "Item4",
+            "title":"SINUS standard hoodie",
+            "image": "../images/hoodie-ash 1 green.png",
+            "description": "About item 1",
+            "price": 400,
+            "availableSizes": [ "S", "M", "L", "XL" ]
+        },
+        {
+            "id": "Item5",
+            "title":"SINUS standard hoodie",
+            "image": "../images/hoodie-ash 1 red.png",
+            "description": "About item 1",
+            "price": 400,
+            "availableSizes": [ "S", "M", "L", "XL" ]
+        },
+        {
+            "id": "Item6",
+            "title":"SINUS standard hoodie",
+            "image": "../images/hoodie-ash 1.png",
+            "description": "About item 1",
+            "price": 400,
+            "availableSizes": [ "S", "M", "L", "XL" ]
+        }
+    ]
+}

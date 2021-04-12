@@ -24,7 +24,7 @@ p{
   grid-template-areas: "header"
   "main"
   "footer";
-  grid-template-rows: 50rem 1fr 5rem;
+  grid-template-rows: 20rem 1fr 5rem;
   grid-template-columns: 1fr;
 }
 
@@ -40,12 +40,15 @@ header{
   background-image: url(./Rectangle\ 1.png);
   background-repeat: no-repeat;
   background-position: top;
+  height: 10rem;
   color: black;
 }
 
 header a{
   color: black;
   text-decoration: none;
+  height: max-content;
+  padding: .5rem;
 }
 
 main{
