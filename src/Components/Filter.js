@@ -1,23 +1,30 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { filterProducts, sortProducts } from '../Actions/productActions'
 
-export default class Filter extends Component {
+
+
+class Filter extends Component {
     render() {
         return (
-            <div className="filter">
+            !this.props.filteredProducts?(
+            <p>Loading...</p>
+            ): 
+            (<div className="filter">
                 <section className="filter-result">
-                    {this.props.count} Products{" "}
+                    {this.props.filteredProducts.length} Products{" "}
                 </section>
                 <section className="filter-sort">
                     Order {" "}
-                    <select value={this.props.sort} onChange={this.props.sortProducts}>
-                        <option value="">Latest</option>
+                    <select value={this.props.sort} onChange={(e) => this.props.sortProducts(this.props.filteredProducts, e.target.value)}>
+                        <option value="Latest" >Latest</option>
                         <option value="Lowest">Lowest</option>
                         <option value="Highest">Highest</option>
                     </select>
                 </section>
                 <section className="filter-size">
                     Sizes {" "}
-                    <select value={this.props.size} onChange={this.props.filterProducts}>
+                    <select value={this.props.size} onChange={(e) => this.props.filterProducts(this.props.products, e.target.value)}>
                         <option value="">ALL</option>
                         <option value="XS">XS</option>
                         <option value="S">S</option>
@@ -27,7 +34,18 @@ export default class Filter extends Component {
                         <option value="XXL">XXL</option>
                     </select>
                 </section>
-            </div>
+            </div>)
         )
     }
 }
+export default connect((state) => ({
+    size: state.product.size,
+    sort: state.product.sort,
+    products: state.product.items,
+    filteredProducts: state.product.filteredItems
+}), 
+{
+    filterProducts,
+    sortProducts
+}
+)(Filter)

@@ -48,37 +48,6 @@ class App extends React.Component {
     localStorage.setItem("cartItems", JSON.stringify(cartItems)) //to save items even when user refreshes site
   }
 
-  sortProducts= (e)=>{
-    //implement
-    const sort = e.target.value
-    this.setState(state => ({
-      sort: sort,
-      products: this.state.products.slice().sort((a,b) => (
-        sort === "Lowest"?
-        (a.price > b.price) ? 1:-1
-        :
-        sort === "Highest"?
-        (a.price < b.price) ? 1:-1
-        :
-        (a.id > b.id) ? 1:-1
-      ))
-    }))
-  }
-
-  filterProducts = (e) =>{
-    //implement
-    if(e.target.value === ""){
-      this.setState({size: e.taerget.value, product: data.products})
-    }else{
-      this.setState({
-      size: e.target.value,
-      products: data.products.filter(product => product.availableSizes.indexOf(e.target.value) >= 0) //checking if the size exist in array
-      })
-    }
-    
-  }
-
-
   render(){
       return (
       <Provider store={store}>
@@ -89,11 +58,8 @@ class App extends React.Component {
         <main>
           <div className="content">
             <section className="mainContent">
-              < Filter count={this.state.products.length} size={this.state.size} sort={this.state.sort} 
-              filterProducts={this.filterProducts}
-              sortProducts={this.sortProducts}
-              />
-              < Products products={this.state.products} addToCart={this.addToCart}/>
+              < Filter />
+              < Products addToCart={this.addToCart}/>
             </section>
             <section className="sidebar">
               < Cart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} createOrder={this.createOrder}/>

@@ -99,4 +99,8 @@ class Products extends Component {
         )
     }
 }
-export default connect((state) =>({products: state.product.items}), {fetchProducts})(Products) //define which part of state we should use. Second parameter is list of objects, third parameter is the name of component we connect to. 
+export default connect((state) =>({products: state.product.filteredItems}), //show only filtered products
+{
+    fetchProducts
+}
+)(Products) //define which part of state we should use. Second parameter is list of objects, third parameter is the name of component we connect to. 
