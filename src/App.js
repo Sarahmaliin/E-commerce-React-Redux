@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react'
 import Products from './Components/Products'
 import Filter from './Components/Filter'
+import Cart from './Components/Cart'
 
 const data = require('./assets/data.json')
 
@@ -11,9 +12,32 @@ class App extends React.Component {
     super();
     this.state = {
       products: data.products,
+      cartItems: [],
       size: "",
       sort: ""
     }
+  }
+
+  removeFromCart = (product) =>{
+    const cartItems = this.state.cartItems.slice();
+    this.setState({
+      cartItems: cartItems.filter(x=>x.id !== product.id) 
+    })//remove chosen product
+  } 
+
+  addToCart = (product) =>{
+    const cartItems = this.state.cartItems.slice();
+    let alreadyInCart = false;
+    cartItems.forEach(item =>{
+        if(item.id === product.id){ //if product already is in cart
+        item.count++; 
+        alreadyInCart = true;
+      }
+    })
+    if(!alreadyInCart){ //if not in cart
+      cartItems.push({...product, count: 1});
+    }
+    this.setState({cartItems})
   }
 
   sortProducts= (e)=>{
@@ -60,10 +84,10 @@ class App extends React.Component {
               filterProducts={this.filterProducts}
               sortProducts={this.sortProducts}
               />
-              < Products products={this.state.products} />
+              < Products products={this.state.products} addToCart={this.addToCart}/>
             </section>
             <section className="sidebar">
-              CartItems
+              < Cart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart}/>
             </section>
           </div>
         </main>
