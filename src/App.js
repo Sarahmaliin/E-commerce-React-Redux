@@ -6,17 +6,14 @@ import Cart from './Components/Cart'
 import store from './store'
 import { Provider } from 'react-redux';
 
-const data = require('./assets/data.json')
-
-
 class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      products: data.products,
-      cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : [], //Doing opposite here, using same name as we set in example cartItems below
-      size: "",
-      sort: ""
+      cartItems: localStorage.getItem("cartItems") ? 
+      JSON.parse(localStorage.getItem("cartItems")) 
+      : 
+      [], //Doing opposite here, using same name as we set in example cartItems below
     }
   }
 
